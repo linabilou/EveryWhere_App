@@ -24,6 +24,10 @@ class Description{
         description.nbChambres = nbChambres;
         description.autres = autres;
     }
+
+    static getDescription(){
+
+    }
 }
 
 class Hse {
@@ -53,7 +57,7 @@ class Maison extends Hse{
 
 class Salle extends Hse{
     constructor(){
-        
+
     }
 }
 
@@ -78,10 +82,14 @@ class Owner extends User{
     constructor()
 }
 
-class Locataire extends User {
+class Customer extends User{
     constructor()
 }
 
-class Acheteur extends User{
+class Locataire extends Customer {
+    constructor()
+}
+
+class Acheteur extends Customer{
     constructor()
 }
