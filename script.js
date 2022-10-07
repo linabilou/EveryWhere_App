@@ -43,30 +43,59 @@ class Hse {
 }
 
 class Maison extends Hse{
-    constructor(nbPieces, prix){
+    constructor(nbPieces, price){
         //nbPieces represente le nombre de pieces de la maison
         this.nbPieces = nbPieces;
         //description est un objet contenant la description des pièces detailles de la maison
         this.description = new Description;
-        //prix de la maison
-        this.prix = prix;
+        //price de la maison
+        this.price = price;
     }
-
 
 }
 
 class Salle extends Hse{
-    constructor(){
+    constructor(price){
+        //price de la salle
+        this.price = price;
+    }
 
+    getPrice(){
+
+        return `Le price du local est ${this.price}.`
     }
 }
 
 class Terrain extends Hse{
-    constructor()
+    constructor(size, priceUnitaire){
+        //size est le nombre total de metre carré
+        this.size = size;
+
+        //price par unité de metre carré
+        this.priceUnitaire = priceUnitaire;
+
+    }
+
+    getPrice(){
+
+        return `Le price total du terrain est ${this.size * this.priceUnitaire} .`
+    }
 }
 
 class Local extends Hse{
-    constructor()
+    constructor(nbPieces, price){
+        //nbPieces represente le nombre de pieces du local
+        this.nbPieces = nbPieces;
+        //description est un objet contenant la description des pièces detailles du local
+        this.description = new Description;
+        //price du local
+        this.price = price;
+    }
+
+    getPrice(){
+
+        return `Le price du local est ${this.price}.`
+    }
 }
 
 
@@ -79,11 +108,19 @@ class User{
 }
 
 class Owner extends User{
-    constructor()
+    constructor(){
+
+    }
+
+    postHse(){
+
+    }
 }
 
 class Customer extends User{
-    constructor()
+    constructor(){
+        
+    }
 }
 
 class Locataire extends Customer {
