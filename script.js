@@ -31,12 +31,23 @@ class Description{
 }
 
 class Hse {
-    constructor(type, etat) {
+    constructor(type) {
         //type peut-etre maison, local, salle, terrain
         this.type = type;
 
         //etat peut-etre soit à vendre soit à louer
         this.localisation = Localisation.getLocalisation();
+
+        this.louer = true;
+    }
+
+    getStateHse(){
+        if(this.louer){
+            this.vendre = false;
+            return `A louer`;
+        }else{
+            return `Le ${this.type} à vendre`;
+        }
     }
 
     
@@ -44,6 +55,7 @@ class Hse {
 
 class Maison extends Hse{
     constructor(nbPieces, price){
+        super(type);
         //nbPieces represente le nombre de pieces de la maison
         this.nbPieces = nbPieces;
         //description est un objet contenant la description des pièces detailles de la maison
@@ -56,6 +68,7 @@ class Maison extends Hse{
 
 class Salle extends Hse{
     constructor(price){
+        super(type);
         //price de la salle
         this.price = price;
     }
@@ -68,6 +81,7 @@ class Salle extends Hse{
 
 class Terrain extends Hse{
     constructor(size, priceUnitaire){
+        super(type);
         //size est le nombre total de metre carré
         this.size = size;
 
@@ -84,6 +98,7 @@ class Terrain extends Hse{
 
 class Local extends Hse{
     constructor(nbPieces, price){
+        super(type);
         //nbPieces represente le nombre de pieces du local
         this.nbPieces = nbPieces;
         //description est un objet contenant la description des pièces detailles du local
@@ -109,9 +124,11 @@ class User{
 
 class Owner extends User{
     constructor(){
+        super(type, nom, prenom);
 
     }
 
+    //publier une offre immobiliere
     postHse(){
 
     }
@@ -119,14 +136,28 @@ class Owner extends User{
 
 class Customer extends User{
     constructor(){
-        
+        super(type, nom, prenom);
+    }
+
+    //trouver ou rechercher une offre immobiliere
+    findHse(){
+
+    }
+
+    //obtenir rendez-vous
+    getRendezVous(){
+
     }
 }
 
 class Locataire extends Customer {
-    constructor()
+    constructor(){
+        super();
+    }
 }
 
 class Acheteur extends Customer{
-    constructor()
+    constructor(){
+        super();
+    }
 }
